@@ -20,11 +20,11 @@ void Discipline::setName(const string& name)
 }
 void Discipline::setWorldRecord(const string& worlsdRecord)
 {
-	this->worldRecord = worldRecord;
+		this->worldRecord = worldRecord;
 }
 void Discipline::setCompetiotionRecord(const string& competitionRecord)
 {
-	this->competitionRecord = competitionRecord;
+		this->competitionRecord = competitionRecord;
 }
 
 const string& Discipline::getName() const

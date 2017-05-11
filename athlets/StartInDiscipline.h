@@ -34,10 +34,12 @@ public:
 	void showLevelInCompetition() const;
 	void addAthlete(const Athlete&);
 	void sort();
-	//const vector<Athlete>& toNextRound() const;
+	const vector<Athlete>& toNextRound() const;
 	const vector<Athlete>& bestAthletes() const;
 
 private:
+	bool find(vector<int>& , int) const;
+	bool find(vector<Athlete>&, const Athlete&) const;
 	DateAndTime time;
 	Discipline discipline;
 	vector<Athlete> athletes;

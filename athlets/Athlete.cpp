@@ -65,13 +65,13 @@ const string& Athlete::getNacionality() const
 	return nacionality; 
 }
 
-bool Athlete::operator== (const Athlete& other)
+bool Athlete::operator== (const Athlete& other) const
 {
 	if (best==other.best)
 		return true;
 	return false;
 }
-bool Athlete::operator> (const Athlete& other)
+bool Athlete::operator> (const Athlete& other) const
 {
 	if (best[best.length() - 1] != other.best[other.best.length() - 1])
 		cout << "Different type of athletes!";
@@ -80,17 +80,17 @@ bool Athlete::operator> (const Athlete& other)
 			return true;		
 	return false;
 }
-bool Athlete::operator< (const Athlete& other)
+bool Athlete::operator< (const Athlete& other) const
 {
 	if (*this == other || *this > other)
 		return false;
 	return true;
 }
-bool Athlete::operator>= (const Athlete& other)
+bool Athlete::operator>= (const Athlete& other) const
 {
 	return *this > other || *this == other;
 }
-bool Athlete::operator<= (const Athlete& other)
+bool Athlete::operator<= (const Athlete& other) const
 {
 	return *this < other || *this == other;
 }

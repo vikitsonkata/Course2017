@@ -25,11 +25,11 @@ public:
 	const string& getBest() const;
 	const string& getNacionality() const;
 
-	bool operator== (const Athlete&);
-	bool operator> (const Athlete&);
-	bool operator< (const Athlete&);
-	bool operator>= (const Athlete&);
-	bool operator<= (const Athlete&);
+	bool operator== (const Athlete&) const;
+	bool operator> (const Athlete&) const;
+	bool operator< (const Athlete&) const;
+	bool operator>= (const Athlete&) const;
+	bool operator<= (const Athlete&) const;
 
 	void print() const;
 private:

@@ -1,4 +1,5 @@
 #include "StartInDiscipline.h"
+#include <algorithm>
 
 StartInDiscipline::StartInDiscipline()
 {
@@ -70,33 +71,61 @@ void StartInDiscipline::showLevelInCompetition() const
 void StartInDiscipline::addAthlete(const Athlete& athlete)
 {
 	athletes.push_back(athlete);
+	if (discipline.getCompetitionRecord() == " " 
+		|| discipline.getCompetitionRecord() > athlete.getBest())
+		discipline.setCompetiotionRecord(athlete.getBest());
+	if (discipline.getWorldRecord() == " "
+		|| discipline.getWorldRecord() > athlete.getBest())
+		discipline.setWorldRecord(athlete.getBest());
 }
+//bool pred(Athlete& q, Athlete& w)
+//{
+//	return q > w;
+//}
 void StartInDiscipline::sort()
 {
-
+	std::sort(athletes.begin(), athletes.end());
 }
-//const vector<Athlete>& StartInDiscipline::toNextRound() const
-//{
-//	vector<Athlete> res;
-//	int size = athletes.size() / 4;
-//	for (int i = 0; i < size; ++i)
-//		res.push_back();
-//	return res;
-//}
+
+
+bool StartInDiscipline::find(vector<int>& vec, int toFind) const
+{
+	for (unsigned int i = 0; i < vec.size() - 1; ++i)
+		if (vec[i] == toFind)
+			return true;
+	return false;
+}
+bool StartInDiscipline::find(vector<Athlete>& vec, const Athlete& toFind) const
+{
+	for (unsigned int i = 0; i < vec.size() - 1; ++i)
+		if (vec[i] == toFind)
+			return true;
+	return false;
+}
+
+const vector<Athlete>& StartInDiscipline::toNextRound() const
+{
+	vector<Athlete>* res = new vector<Athlete>;
+	int size = athletes.size() / 4;
+	size = size ? size : 1;
+	for (int i = 0; i < size; ++i)
+		res->push_back(athletes[i]);
+	return *res;
+}
 const vector<Athlete>& StartInDiscipline::bestAthletes() const
 {
 	vector<Athlete> someAthletes;
 	vector<int> indexes;
-	for (unsigned int i = 1; i < athletes.size() - 1 && !find(indexes,i); ++i)
+	for (int i = 1;	(i < athletes.size() - 1) && !(find(indexes,i)); ++i)
 	{
 		int max = 0;
-		// ??? if (athletes[i] > athletes[max])
-		if ((athletes[i].getBest()[athletes[i].getBest().length() - 1] == 'm' &&
+		if (athletes[i] > athletes[max])
+		/*if ((athletes[i].getBest()[athletes[i].getBest().length() - 1] == 'm' &&
 			athletes[i].getBest() > athletes[max].getBest()) ||
 			(athletes[i].getBest()[athletes[i].getBest().length() - 1] == 's'
-				&& athletes[i].getBest() < athletes[max].getBest()))
+				&& athletes[i].getBest() < athletes[max].getBest()))*/
 			max = i;
-		indexes.push_back(max)
+		indexes.push_back(max);
 		someAthletes.push_back(athletes[max]);
 	}
 	return someAthletes;
@@ -115,13 +144,4 @@ istream& operator>> (istream& is, StartInDiscipline& other)
 	is >> other.time >> other.discipline;
 	other.setType();	
 	return is;
-}
-
-template <class T>
-bool find(vector<T> vec, T toFind)
-{
-	for (unsigned int i = 0; i < vec.size() - 1; ++i)
-		if (vec[i] == toFind)
-			return true;
-	return false;
 }
