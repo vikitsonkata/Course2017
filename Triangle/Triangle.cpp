@@ -3,13 +3,20 @@
 
 istream& operator>> (istream& is, Triangle& other)
 {
-	is >> other.a >> other.b >> other.c >> other.h;
+	is.ignore(1);
+	is >> other.a;
+	is.ignore(1);
+	is >> other.b;
+	is.ignore(1);
+	is >> other.c;
+	is.ignore(1);
+	is >> other.h;
 	return is;
 }
 ostream& operator<< (ostream& os, const Triangle& other)
 {
-	os << other.a << " " << other.b << " " 
-		<< other.c << " " << other.h << endl;
+	os << "=>" << other.a << "," << other.b << "," 
+		<< other.c << "," << other.h << endl;
 	return os;
 }
 
@@ -64,6 +71,5 @@ bool Triangle::operator==(const Triangle& other)
 }
 bool Triangle::operator!=(const Triangle& other)
 {
-	return (a != other.a && b != other.b &&
-		c != other.c && h != other.h);
+	return !(*this == other);
 }
