@@ -1,0 +1,11 @@
+﻿Build started 1.4.2017 г. 13:37:57 ч..
+     1>Project "c:\Users\Viktor\documents\visual studio 2015\Projects\28.03.2017\HW3\HW3\HW3.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt "HW3-2.cpp"
+         HW3-2.cpp
+     1>c:\users\viktor\documents\visual studio 2015\projects\28.03.2017\hw3\hw3\hw3-2.cpp(5): fatal error C1075: the left brace '{' was unmatched at the end of the file
+     1>Done Building Project "c:\Users\Viktor\documents\visual studio 2015\Projects\28.03.2017\HW3\HW3\HW3.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.52
